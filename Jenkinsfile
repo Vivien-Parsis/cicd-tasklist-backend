@@ -93,9 +93,9 @@ pipeline {
       }
       steps {
         withSonarQubeEnv('SonarQube') {
-          sh "sonar-scanner -Dsonar.projectVersion=${BUILD_NUMBER}"
-        }
+          sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectVersion=${BUILD_NUMBER}"
       }
+  }
     }
 
     // 7. Vérification de la Quality Gate (peut bloquer la pipeline)
