@@ -86,23 +86,14 @@ pipeline {
       }
     }
 
-    // 6. Analyse SonarQube
-    stage('SonarQube analysis') {
+    // 6+7. Analyse SonarQube
+    stage('SonarQube analysis & Quality Gate') {
       environment {
         SCANNER_HOME = tool 'SonarScanner'
       }
       steps {
         withSonarQubeEnv('SonarQube') {
-          sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectVersion=${BUILD_NUMBER}"
-      }
-  }
-    }
-
-    // 7. Vérification de la Quality Gate (peut bloquer la pipeline)
-    stage('Quality Gate') {
-      steps {
-        timeout(time: 5, unit: 'MINUTES') {
-          waitForQualityGate abortPipeline: true
+          sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectVersion=${BUILD_NUMBER} -Dsonar.qualitygate.wait=true"
         }
       }
     }
