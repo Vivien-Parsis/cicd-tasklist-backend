@@ -82,7 +82,6 @@ pipeline {
         always {
           junit testResults: 'reports/e2e.xml', allowEmptyResults: true
           sh 'rm -f prisma/test.db || true'
-          sh 'ls -la coverage/ || echo "PAS DE DOSSIER COVERAGE"'
         }
       }
     }
