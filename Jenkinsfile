@@ -12,7 +12,9 @@
 
 pipeline {
   agent any
-
+  tools {
+    nodejs 'Node22'
+  }
   options {
     timestamps()
     timeout(time: 30, unit: 'MINUTES')
