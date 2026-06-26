@@ -88,6 +88,9 @@ pipeline {
 
     // 6. Analyse SonarQube
     stage('SonarQube analysis') {
+      environment {
+        SCANNER_HOME = tool 'SonarScanner'
+      }
       steps {
         withSonarQubeEnv('SonarQube') {
           sh "sonar-scanner -Dsonar.projectVersion=${BUILD_NUMBER}"
