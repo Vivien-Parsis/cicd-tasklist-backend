@@ -13,7 +13,7 @@
 pipeline {
   agent any
   tools {
-    nodejs 'Node22'
+    nodejs 'Node24'
   }
   options {
     timestamps()
