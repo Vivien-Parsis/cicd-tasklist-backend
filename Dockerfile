@@ -8,7 +8,7 @@ USER appuser
 COPY ./package.json .
 COPY package-lock.json .
 
-RUN npm ci
+RUN npm ci --omit=dev
 
 COPY . .
 
