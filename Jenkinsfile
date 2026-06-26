@@ -22,7 +22,7 @@ pipeline {
   environment {
     IMAGE_NAME = 'tasklist-backend'
 
-    DOCKERHUB  = credentials('vivien-dockerhub-password')
+    DOCKERHUB  = credentials('vivienparsis-dockerhub-password')
 
     SONAR_PROJECT_KEY = 'tasklist-backend'
 
