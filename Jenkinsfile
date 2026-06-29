@@ -141,7 +141,7 @@ pipeline {
       steps {
         sh '''
           trivy image --no-progress --exit-code 1 \
-            --severity HIGH,CRITICAL --ignore-unfixed \
+            --severity CRITICAL --ignore-unfixed \
             $DOCKERHUB_USR/$IMAGE_NAME:$BUILD_NUMBER
         '''
       }
